@@ -1,0 +1,23 @@
+{
+  "name": "valbot",
+  "version": "1.0.0",
+  "description": "A bot to control Valheim servers via Discord",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bots/ValBot.git"
+  },
+  "author": "John Paul Wile",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bots/ValBot/issues"
+  },
+  "homepage": "https://github.com/Bots/ValBot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "dotenv": "^8.2.0"
+  }
+}
