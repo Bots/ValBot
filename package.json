@@ -17,7 +17,12 @@
   },
   "homepage": "https://github.com/Bots/ValBot#readme",
   "dependencies": {
+    "@aws-sdk/client-lightsail": "^3.11.0",
+    "@epegzz/winston-dev-console": "^1.0.1",
+    "aws-sdk": "^2.881.0",
     "discord.js": "^12.5.3",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "hermes-engine": "^0.7.2",
+    "lodash": "^4.17.21"
   }
 }
