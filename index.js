@@ -11,6 +11,7 @@ const client = new Discord.Client()
 const PREFIX = '!'
 const awsRegion = process.env.AWS_REGION
 const awsPort = process.env.AWS_PORT
+const attachment = new Discord.MessageAttachment('./assets/valheim.png', 'sample.png');
 
 const awsCredentials = {
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -45,6 +46,8 @@ client.on('message', async (message) => {
             const statusEmbed = new Discord.MessageEmbed()
               .setColor('RED')
               .setTitle('Server Status:')
+              .attachFiles(attachment)
+              .setThumbnail('attachment://sample.png')
               .addFields(
                 {
                   name: 'Public IP/Port',
@@ -69,6 +72,8 @@ client.on('message', async (message) => {
             const startEmbed = new Discord.MessageEmbed()
               .setColor('RED')
               .setTitle('Starting Server...')
+              .attachFiles(attachment)
+              .setThumbnail('attachment://sample.png')
               .setFooter(
                 'Copyright 2021 BotsOne Labs, Source Code: https://github.com/Bots/ValBot/'
               )
@@ -85,6 +90,8 @@ client.on('message', async (message) => {
             const stopEmbed = new Discord.MessageEmbed()
               .setColor('RED')
               .setTitle('Stopping Server...')
+              .attachFiles(attachment)
+              .setThumbnail('attachment://sample.png')
               .setFooter(
                 'Copyright 2021 BotsOne Labs, Source Code: https://github.com/Bots/ValBot/'
               )
