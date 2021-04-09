@@ -9,6 +9,8 @@ require('dotenv').config()
 
 const client = new Discord.Client()
 const PREFIX = '!'
+const awsRegion = process.env.AWS_REGION
+const awsPort = process.env.AWS_PORT
 
 const awsCredentials = {
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -17,7 +19,7 @@ const awsCredentials = {
 
 AWS.config.update({
   credentials: awsCredentials,
-  region: 'us-west-2'
+  region: awsRegion
 })
 
 const lightsail = new AWS.Lightsail()
@@ -46,7 +48,7 @@ client.on('message', async (message) => {
               .addFields(
                 {
                   name: 'Public IP/Port',
-                  value: `${data.instances[0].publicIpAddress}:2456`
+                  value: `${data.instances[0].publicIpAddress}:${awsPort}`
                 },
                 { name: 'Password', value: process.env.VALHEIM_PASSWORD },
                 { name: 'Server Status', value: data.instances[0].state.name }
@@ -61,7 +63,7 @@ client.on('message', async (message) => {
         break
 
       case 'ValheimStart':
-        lightsail.startInstance({ instanceName: 'Valheim_1' }, (err, data) => {
+        lightsail.startInstance({ instanceName: process.env.AWS_LIGHTSAIL_INSTANCE_NAME }, (err, data) => {
           if (err) console.log(err, err.stack)
           else {
             const startEmbed = new Discord.MessageEmbed()
@@ -77,7 +79,7 @@ client.on('message', async (message) => {
         break
 
       case 'ValheimStop':
-        lightsail.stopInstance({ instanceName: 'Valheim_1' }, (err, data) => {
+        lightsail.stopInstance({ instanceName: process.env.AWS_LIGHTSAIL_INSTANCE_NAME }, (err, data) => {
           if (err) console.log(err, err.stack)
           else {
             const stopEmbed = new Discord.MessageEmbed()
